@@ -38,7 +38,7 @@ public class Configuration {
 
 	public static final String CLIENT_TITLE = "CyphoraX | ";
 	public static final String WEBSITE = "https://cyphorax.com";
-	public static final String DEDICATED_SERVER_ADDRESS = "216.158.233.150"; //158.69.62.205
+	public static final String DEDICATED_SERVER_ADDRESS = "127.0.0.1"; //158.69.62.205
 	public static final String TEST_SERVER_ADDRESS = LOCAL_HOST ? "216.158.233.150" : "216.158.233.150";
 	public static final int PORT = 43595;
 	public static final int TEST_PORT = 43595;

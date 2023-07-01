@@ -1944,14 +1944,15 @@ public class Model extends Renderable implements RSModel {
 							continue;
 						}
 						if (highlighted && inBounds(vertexScreenY[triX], vertexScreenY[triY], vertexScreenY[triZ], screenXX, screenXY, screenXZ,size)) {
-							hoveringObjects[objectsHovering++] = uid;
+
+							hoveringObjects[objectsHovering < hoveringObjects.length ? objectsHovering++ : 999] = uid;
 						}
 						continue;
 					}
 
 					if (!var25 || screenXX != -5000 && screenXY != -5000 && screenXZ != -5000) {
 						if (highlighted && inBounds(vertexScreenY[triX], vertexScreenY[triY], vertexScreenY[triZ], screenXX, screenXY, screenXZ, size)) {
-							hoveringObjects[objectsHovering++] = uid;
+							hoveringObjects[objectsHovering < hoveringObjects.length ? objectsHovering++ : 999] = uid;
 							highlighted = false;
 						}
 

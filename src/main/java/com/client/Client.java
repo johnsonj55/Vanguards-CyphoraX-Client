@@ -48,6 +48,8 @@ import com.client.graphics.interfaces.impl.Interfaces;
 import com.client.graphics.interfaces.impl.MonsterDropViewer;
 import com.client.graphics.interfaces.impl.Nightmare;
 import com.client.graphics.interfaces.impl.QuestTab;
+
+import static com.client.Model.hoveringObjects;
 import static com.client.SceneGraph.pitchRelaxEnabled;
 import static com.client.engine.impl.MouseHandler.clickMode3;
 
@@ -6847,7 +6849,7 @@ public class Client extends GameEngine implements RSClient {
 		}
 		long j = -1;
 		for (int k = 0; k < Model.objectsHovering; k++) {
-			long l = Model.hoveringObjects[k];
+			long l = hoveringObjects[Model.objectsHovering < hoveringObjects.length ? k : 999];
 			int i1 = ObjectKeyUtil.getObjectX(l);
 			int j1 = ObjectKeyUtil.getObjectY(l);
 			int k1 = ObjectKeyUtil.getObjectOpcode(l);
@@ -7253,10 +7255,10 @@ public class Client extends GameEngine implements RSClient {
 						delFriend(l1);
 					}
 
-					if (friendsListAction == 557 && promptInput.length() > 0) {//money pouch
+/*					if (friendsListAction == 557 && promptInput.length() > 0) {//money pouch
 						inputString = "::withdrawmp " + promptInput;
 						sendPacket(103);
-					}
+					}*/
 
 
 					if (friendsListAction == 3 && promptInput.length() > 0) {
@@ -14877,7 +14879,7 @@ public class Client extends GameEngine implements RSClient {
 			loadPrayerOrb(xOffset);
 			loadRunOrb(xOffset);
 			drawSpecialOrb(xOffset);
-			drawMoneyPouch(xOffset);
+			//drawMoneyPouch(xOffset);
 		} catch (Exception e) {}
 
 		if (drawExperienceCounter) {
@@ -15264,12 +15266,12 @@ public class Client extends GameEngine implements RSClient {
 
 			newBoldFont.drawString(
 				" " + myUsername + ((loginScreenCursorPos == 0) & (loopCycle % 40 < 20) ? "|" : ""),
-				290, 225, 0xb45f06, 0x191919, 255);
+					260, 228, 0xb45f06, 0x191919, 255);
 			j += 15;
 			newBoldFont.drawString(
 				" " + StringUtils.passwordAsterisks(getPassword())
 					+ ((loginScreenCursorPos == 1) & (loopCycle % 40 < 20) ? "|" : ""),
-				290, 268, 0xb45f06, 0x191919, 255);
+					260, 280, 0xb45f06, 0x191919, 255);
 
 			int rememberYOffset = 6;
 
@@ -15755,8 +15757,8 @@ public class Client extends GameEngine implements RSClient {
 		int k1 = canvasHeight / 2 + 50;
 		k1 += 20;
 
-		if (MouseHandler.clickMode3 == 1 && MouseHandler.saveClickX >= 231 && MouseHandler.saveClickX <= 370 && MouseHandler.saveClickY >= 296
-			&& MouseHandler.saveClickY <= 333) {
+		if (MouseHandler.clickMode3 == 1 && MouseHandler.saveClickX >= 231 && MouseHandler.saveClickX <= 370 && MouseHandler.saveClickY >= 218
+			&& MouseHandler.saveClickY <= 350) {
 
 			// loginScreenState = 3;
 			loginFailures = 0;
