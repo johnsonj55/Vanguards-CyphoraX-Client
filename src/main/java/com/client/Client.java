@@ -163,6 +163,9 @@ public class Client extends GameEngine implements RSClient {
 
 	public DevConsole devConsole = new DevConsole();
 	public int scrollbar_position;
+	private static Sprite[] wiki;
+	Sprite wiki1 = new Sprite("/Interfaces/Wiki/2420");
+	Sprite wiki2 = new Sprite("/Interfaces/Wiki/2421");
 	int scrollMax = 0;
 	public void draw_scrollbar(int x, int y, int width, int height, int offset, int max_lines, int height_seperator, int y_pad)
 	{
@@ -1113,28 +1116,28 @@ public class Client extends GameEngine implements RSClient {
 			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 119 : 104);
 		runHover = fixed
 			? runHover = MouseHandler.mouseX >= (Configuration.osbuddyGameframe ? 530 : 522)
-			&& MouseHandler.mouseX <= (Configuration.osbuddyGameframe ? 582 : 594)
+			&& MouseHandler.mouseX <= (Configuration.osbuddyGameframe ?  582 : 594)
 			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 114 : 109)
 			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 142 : 142)
-			: MouseHandler.mouseX >= canvasWidth - (Configuration.osbuddyGameframe ? 196 : 186)
-			&& MouseHandler.mouseX <= canvasWidth - (Configuration.osbuddyGameframe ? 142 : 132)
-			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 123 : 132)
-			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 150 : 159);
+			: MouseHandler.mouseX >= canvasWidth - (Configuration.osbuddyGameframe ? 196 : 200)
+			&& MouseHandler.mouseX <= canvasWidth - (Configuration.osbuddyGameframe ? 142 : 146)
+			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 123 : 120)
+			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 150 : 147);
 		counterHover = fixed ? MouseHandler.mouseX >= 522 && MouseHandler.mouseX <= 544 && MouseHandler.mouseY >= 20 && MouseHandler.mouseY <= 47
 			: MouseHandler.mouseX >= canvasWidth - 205 && MouseHandler.mouseX <= canvasWidth - 184 && MouseHandler.mouseY >= 27
 			&& MouseHandler.mouseY <= 44;
-		worldHover = fixed ? MouseHandler.mouseX >= 715 && MouseHandler.mouseX <= 740 && MouseHandler.mouseY >= 122 && MouseHandler.mouseY <= 135 // 132 160
-			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 143
-			&& MouseHandler.mouseY <= 172;
+		worldHover = fixed ? MouseHandler.mouseX >= 714 && MouseHandler.mouseX <= 740 && MouseHandler.mouseY >= 121 && MouseHandler.mouseY <= 146 // 132 160
+			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 115
+			&& MouseHandler.mouseY <= 152;
 
-		wikiHover = fixed ? MouseHandler.mouseX >= 704 && MouseHandler.mouseX <= 744 && MouseHandler.mouseY >= 150 && MouseHandler.mouseY <= 161
-			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 160 && MouseHandler.mouseY <= 173;
+		wikiHover = fixed ? MouseHandler.mouseX >= 714 && MouseHandler.mouseX <= 740 && MouseHandler.mouseY >= 148 && MouseHandler.mouseY <= 162
+			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 153 && MouseHandler.mouseY <= 172;
 
 		teleOrbHover = fixed ? MouseHandler.mouseX >= 709 && MouseHandler.mouseX <= 734 && MouseHandler.mouseY >= 32 && MouseHandler.mouseY <= 57
 			: MouseHandler.mouseX >= canvasWidth - 94 && MouseHandler.mouseX <= canvasWidth - 80 && MouseHandler.mouseY >= 160 && MouseHandler.mouseY <= 173;
 
-		pouchHover = fixed ? MouseHandler.mouseX >= 678 && MouseHandler.mouseX <= 739 && MouseHandler.mouseY >= 129 && MouseHandler.mouseY <= 157 :
-			MouseHandler.mouseX >= canvasWidth - 65 && MouseHandler.mouseX <= canvasWidth && MouseHandler.mouseY >= 154 && MouseHandler.mouseY <= 185;
+		/*pouchHover = fixed ? MouseHandler.mouseX >= 678 && MouseHandler.mouseX <= 739 && MouseHandler.mouseY >= 129 && MouseHandler.mouseY <= 157 :
+			MouseHandler.mouseX >= canvasWidth - 65 && MouseHandler.mouseX <= canvasWidth && MouseHandler.mouseY >= 154 && MouseHandler.mouseY <= 185;*/
 	}
 
 	private boolean prayHover, prayClicked;
@@ -5062,7 +5065,7 @@ public class Client extends GameEngine implements RSClient {
 			stream.writeWord(7001);
 		}
 
-		if (l == 713) {//Money pouch
+/*		if (l == 713) {//Money pouch
 			//	inputTaken = true;
 			//	messagePromptRaised = true;
 			//	amountOrNameInput = "";
@@ -5081,7 +5084,7 @@ public class Client extends GameEngine implements RSClient {
 		if (l == 715) {//Money pouch
 			stream.createFrame(185);
 			stream.writeWord(715);
-		}
+		}*/
 
 
 		if(l==852){
@@ -7103,7 +7106,7 @@ public class Client extends GameEngine implements RSClient {
 		channelButtons = null;
 		venomOrb = null;
 		/**/
-
+		wiki = null;
 		hitMarks = null;
 		headIcons = null;
 		skullIcons = null;
@@ -7565,6 +7568,13 @@ public class Client extends GameEngine implements RSClient {
 								exception.printStackTrace();
 							}
 						}
+						if (inputString.startsWith("::admintest")) {
+							try {
+
+							}catch (Exception exception) {
+								pushMessage("Not valid", 0, "");
+							}
+						}
 
 
 						if (inputString.startsWith("::graphics")) {
@@ -7850,7 +7860,7 @@ public class Client extends GameEngine implements RSClient {
 							}
 
 							if (inputString.startsWith("::interface")) {
-								if (localPlayer.displayName.equalsIgnoreCase("Noah")) {
+								if (localPlayer.displayName.equalsIgnoreCase("Josh")) {
 									try {
 										String[] args = inputString.split(" ");
 										if (args != null)
@@ -9568,14 +9578,14 @@ public class Client extends GameEngine implements RSClient {
 			menuActionRow = 3;
 		}
 
-		//if (wikiHover && drawOrbs) {
-		//	HoverMenuManager.reset();
-		//	menuActionName[1] = "search @or1@wiki";//2nd option
-		//	menuActionID[1] = 855;
-		//	menuActionRow = 2;
-		//}
+		if (wikiHover && drawOrbs) {
+			HoverMenuManager.reset();
+			menuActionName[1] = "search @or1@wiki";//2nd option
+			menuActionID[1] = 855;
+			menuActionRow = 2;
+		}
 
-
+/*
 		if (pouchHover && drawOrbs ) {
 			HoverMenuManager.reset();
 			menuActionName[3] = "Withdraw coins";
@@ -9585,7 +9595,7 @@ public class Client extends GameEngine implements RSClient {
 			menuActionName[1] = "Check pouch";
 			menuActionID[1] = 714;
 			menuActionRow = 4;
-		}
+		}*/
 
 		if (teleOrbHover && drawOrbs) {
 			HoverMenuManager.reset();
@@ -10867,7 +10877,7 @@ public class Client extends GameEngine implements RSClient {
 			}
 
 			//packCustomModels();
-			//packCustomMaps();
+			packCustomMaps();
 
 
 			//preloadModels();
@@ -10969,7 +10979,11 @@ public class Client extends GameEngine implements RSClient {
 					mapFunctions[l3] = new Sprite("MapFunctions/" + l3);
 			} catch (Exception _ex) {
 			}
-
+			try {
+				for (int l3 = 0; l3 < 1; l3++)
+					wiki[l3] = new Sprite("Wiki/" + l3);
+			} catch (Exception _ex) {
+			}
 			try {
 				for (int i4 = 0; i4 < 20; i4++) {
 					hitMarks[i4] = new Sprite(streamLoader_2, "hitmarks", i4);
@@ -14660,6 +14674,14 @@ public class Client extends GameEngine implements RSClient {
 			} else {
 				cacheSprite2[0].drawSprite(xOffset + 202 - 2, 20 + 90);
 			}
+			wiki[1] =  new Sprite("/Wiki/1");
+			if (wikiHover) {
+				wiki[1].drawSprite(xOffset + 190, 149);
+
+			} else {
+				wiki[0].drawSprite(xOffset + 190, 149);
+
+			}
 			//if (wikiHover) {
 			//	wiki2.drawSprite(185, 153);
 
@@ -15259,6 +15281,7 @@ public class Client extends GameEngine implements RSClient {
 			exit.drawSprite(exitX, exitY);
 		} else if (loginScreenState == LoginScreenState.LOGIN) {
 			Announcements.displayAnnouncements();
+			logo2021.drawAdvancedSprite(centerX - 135, j - 150);
 			if (firstLoginMessage.length() > 0) {
 				newBoldFont.drawCenteredString(firstLoginMessage, centerX - 0, j - 11, 0xffffff, 0x191919, 255);
 				j += 30;
@@ -17455,6 +17478,7 @@ public class Client extends GameEngine implements RSClient {
 
 				case 97:
 					int interfaceId = inStream.readUShort();
+
 					resetAnimation(interfaceId);
 					if (invOverlayInterfaceID != 0) {
 						invOverlayInterfaceID = 0;
@@ -17958,6 +17982,7 @@ public class Client extends GameEngine implements RSClient {
 		aBooleanArray876 = new boolean[5];
 		drawFlames = false;
 		reportAbuseInput = "";
+		wiki = new Sprite[2];
 		unknownInt10 = -1;
 		menuOpen = false;
 		inputString = "";

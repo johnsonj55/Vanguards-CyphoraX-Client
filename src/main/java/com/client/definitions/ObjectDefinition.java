@@ -242,7 +242,7 @@ public final class ObjectDefinition implements RSObjectComposition {
 				objectDef.actions = new String[] { "Awaken", null, null, null, null };
 				break;
 			case 31622:
-				objectDef.name = "Outlast Entrance";
+				objectDef.name = "Warzone Entrance";
 				objectDef.actions = new String[] { "Enter", "Check Players", "Check Active", null, null };
 				break;
 			case 31624:
@@ -387,6 +387,8 @@ public final class ObjectDefinition implements RSObjectComposition {
 				break;
 
 			case 8356:
+				objectDef.sizeX = 1;
+				objectDef.sizeY = 1;
 				objectDef.actions = new String[] { "Teleport", "Mt. Quidamortem", null, null, null };
 				break;
 
@@ -394,7 +396,7 @@ public final class ObjectDefinition implements RSObjectComposition {
 				objectDef.actions = new String[] { "Teleport", "Recharge Crystals", null, null, null };
 				break;
 			case 26740:
-				objectDef.name = "Player Outlast";
+				objectDef.name = "Player Warzone";
 				objectDef.actions = new String[] { "Join", "Setup", null, null, null };
 				break;
 
@@ -479,7 +481,11 @@ public final class ObjectDefinition implements RSObjectComposition {
 				objectDef.actions = new String[] { "Chop down", null, null, null, null };
 				objectDef.mapscene = 3;
 				break;
-
+			case -1:
+				objectDef.objectModels = new int[] { -1 };
+				objectDef.sizeX = 0;
+				objectDef.sizeY =0;
+				break;
 			case 6943:
 				objectDef.objectModels = new int[] { 1270, };
 				objectDef.name = "Bank booth";

@@ -36,7 +36,7 @@ public class Configuration {
 	public static final int SERVER_VERSION = 3; //this is the current one src old here
 
 
-	public static final String CLIENT_TITLE = "CyphoraX | ";
+	public static final String CLIENT_TITLE = "CyphoraX";
 	public static final String WEBSITE = "https://cyphorax.com";
 	public static final String DEDICATED_SERVER_ADDRESS = "127.0.0.1"; //158.69.62.205
 	public static final String TEST_SERVER_ADDRESS = LOCAL_HOST ? "216.158.233.150" : "216.158.233.150";

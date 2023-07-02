@@ -62,6 +62,7 @@ public final class Interfaces extends RSInterface {
 		clanChatTab(defaultTextDrawingAreas);
 		clanChatSetup(defaultTextDrawingAreas);
 		teleportInterface(defaultTextDrawingAreas);
+	/*	teleportInterfaceJosh(defaultTextDrawingAreas);*/
 		SettingsTabWidget.widget(defaultTextDrawingAreas);
 		emoteTab();
 		bountyHunterWidget(defaultTextDrawingAreas);
@@ -859,7 +860,7 @@ public final class Interfaces extends RSInterface {
 				"\\n" +
 						"\\n" +
 						"\\n" +
-						"Outlast is a safe PvP tournament.\\n" +
+						"Warzone is a safe PvP tournament.\\n" +
 				"\\n" +
 				"Earn weapon and armour upgrades by killing targets. \\n" +
 				"Once the 3 minute timer runs out, the fog damage will begin.\\n" +
@@ -901,7 +902,7 @@ public final class Interfaces extends RSInterface {
 		RSInterface widget = addInterface(264);
 		int childId = 265;
 		
-		addText(childId++, "Outlast", tda, 2, 0xFFFFFF, true, true);
+		addText(childId++, "Warzone", tda, 2, 0xFFFFFF, true, true);
 		addText(childId++, "Time Left: 5 min", tda, 1, 0xFFFFFF, true, true);
 		addText(childId++, "Current Players", tda, 1, 0xFFFFFF, true, true);
 		
@@ -2355,6 +2356,116 @@ interfaceId+=5000;
 		interfaces.setNewButtonClicking();
 		scrollTab1.setNewButtonClicking();
 	}
+
+
+
+	/*private static void teleportInterfaceJosh(TextDrawingArea[] textDrawingAreas) {
+		String dir = "Interfaces/Presets/SPRITE";
+		int interfaceId = 44712;//checkinterface
+		int child = 0;
+		RSInterface interfaces = RSInterface.addInterface(interfaceId);
+		interfaceId++;
+		RSInterface.setChildren(33, interfaces);
+		int xOffset = 20;
+		int yOffset = 20;
+
+		RSInterface.addSprite(interfaceId, 0, "Interfaces/teleinterface/background"); // Background.
+		RSInterface.setBounds(interfaceId, 0, 0, child, interfaces);
+		interfaceId++;
+		child++;
+
+		RSInterface.addText(interfaceId, "Teleports", textDrawingAreas, 2, 0xff981f, false);
+		RSInterface.setBounds(interfaceId, 200 + xOffset, yOffset, child, interfaces);
+		interfaceId++;
+		child++;
+
+		Object[][] teleportSelections = {
+				{"Monsters", 1616},
+				{"Bosses", 1617},
+				{"Wilderness", 1613},
+				{"Skilling", 1614},
+				{"Minigames", 1618},
+				{"Cities", 1615},
+				{"Donator", 1619},
+		};
+
+		int yExtra = -1, count = 0;
+		int xExtra = -1;
+		for (int index = 0; index < 7; index++) {
+			String name = (String) teleportSelections[index][0];
+			int buttonId = (int) teleportSelections[index][1];
+			RSInterface.addHoverButtonLatest("Interfaces/Presets/SPRITE",interfaceId, interfaceId + 1, interfaceId + 2, count % 2 == 0 ? 614 : 614,
+					610, 89, 26, "Choose");
+			newHoverButtonConfig(interfaceId, "Choose", 612, 614, dir, 1333, 1 + index);
+			count++;
+			//RSInterface.addSprite(interfaceId, 612, "Interfaces/Presets/SPRITE");
+			//RSInterface.setBounds(interfaceId,  xOffset + xExtra, 57 + yOffset , child, interfaces);
+			//child++;
+			RSInterface.setBounds(interfaceId + 1,  xOffset + xExtra, 15 + yOffset, child, interfaces);
+			child++;
+			interfaceId += 3;
+			RSInterface.addClickableText(interfaceId, name,"Choose", textDrawingAreas, 1, 0xff981f, false,false,60, 16);
+			RSInterface.setBounds(interfaceId, 35 - 16 + xOffset + xExtra, 20 + yOffset *//*+ yExtra*//*, child, interfaces);
+			interfaceId++;
+			child++;
+			Sprite selectionIcon = new Sprite("Interfaces/teleport_interface/SPRITE " + buttonId);
+			RSInterface.addSprite(interfaceId, selectionIcon);
+			RSInterface.setBounds(interfaceId, 18 + xOffset + xExtra - 15 - (selectionIcon.myWidth / 2) + 10,
+					18 + yOffset - (selectionIcon.myHeight / 2) + 9, child, interfaces);
+			interfaceId++;
+			child++;
+			yExtra += 25;
+			xExtra += 80;
+		}
+		yExtra = 0;
+		interfaceId+=5000;
+		//RSInterface.addHoverButtonLatest("Interfaces/Presets/SPRITE",interfaceId, interfaceId + 1, interfaceId + 2, 148, 149, 15, 15,
+		//		"Close Window");
+		RSInterface.addHoverButtonLatest("Interfaces/Presets/SPRITE",interfaceId, interfaceId + 1, interfaceId + 2, 148, 149, 15, 15,
+				"Close Window");
+		//RSInterface.setBounds(CLOSE_BUTTON_SMALL, 317 + xOffset, 30 + yOffset, child, interfaces);
+		//RSInterface.setBounds(CLOSE_BUTTON_SMALL_HOVER, 317 + xOffset, 30 + yOffset, child + 1, interfaces);
+		newHoverButtonConfig(interfaceId, "Close Window", 149, 148, dir, 1333, 1);
+		RSInterface.setBounds(interfaceId, 317 + xOffset, 30 + yOffset, child, interfaces);
+		RSInterface.setBounds(interfaceId + 1, 317 + xOffset, 30 + yOffset, child + 1, interfaces);
+		child += 2;
+		interfaceId += 3;
+
+		RSInterface scrollTab1 = RSInterface.addInterface(interfaceId);
+		RSInterface.setBounds(interfaceId, 111 + xOffset, 56 + yOffset, child, interfaces); // scrollTab1
+		interfaceId++;
+		child++;
+
+		int teleportAmount = 40;
+		scrollTab1.width = 209;
+		scrollTab1.height = 174;
+		scrollTab1.scrollMax = 625;
+		scrollTab1.totalChildren(teleportAmount * 3);
+		int increaseY = 0, childNew = 0;
+		for (int i = 0; i < teleportAmount; i++) {
+
+			RSInterface.addHoverButtonLatest("Interfaces/Presets/SPRITE",interfaceId, interfaceId + 1, interfaceId + 2, count % 2 == 0 ? 613 : 967,
+					611, 224, 26, "Teleport");
+			newHoverButtonConfig(interfaceId, "Teleport", 611, 613, dir, 1333, 1);
+			count++;
+			scrollTab1.child(childNew, interfaceId, 0, increaseY);
+			childNew++;
+			scrollTab1.child(childNew, interfaceId + 1, 0, increaseY);
+			childNew++;
+			interfaceId += 3;
+
+			RSInterface.addText(interfaceId, ""+interfaceId, textDrawingAreas, 1, 0xff981f, true);
+			scrollTab1.child(childNew, interfaceId, 104, increaseY + 4);
+			increaseY += 25;
+			interfaceId++;
+			childNew++;
+		}
+
+		interfaces.setNewButtonClicking();
+		scrollTab1.setNewButtonClicking();
+	}*/
+
+
 
 	public static void keybindingDropdown(int id, int width, int defaultOption, String[] options, MenuItem menuItem,
 			boolean inverted) {

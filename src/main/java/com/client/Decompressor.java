@@ -81,10 +81,10 @@ public class Decompressor {
 
 				// file id is the actual file id, model 1 would have 1 here
 				int readFileId = ((buffer[0] & 0xff) << 8) + (buffer[1] & 0xff);
-
+				System.out.println(readFileId);
 				// Chunk is a piece of the file (read from the 512 sectors)
 				int readChunkId = ((buffer[2] & 0xff) << 8) + (buffer[3] & 0xff);
-
+				System.out.println(readChunkId);
 				// sector is the 520 byte blocks of data (512 + 6 for header)
 				int readSectorId = ((buffer[4] & 0xff) << 16) + ((buffer[5] & 0xff) << 8) + (buffer[6] & 0xff);
 
