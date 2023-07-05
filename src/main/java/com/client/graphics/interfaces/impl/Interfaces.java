@@ -2325,7 +2325,7 @@ public final class Interfaces extends RSInterface {
 		addHoveredButtonNew(interfaceId, btnHover, 85, 20, filePath);
 		interfaceId++;
 		totalChild++;
-		addSprite(interfaceId, 1066);
+		addSprite(interfaceId, 1066, filePath);
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Bosses", tda, 1, orangeColor, true, true);
@@ -2339,7 +2339,7 @@ public final class Interfaces extends RSInterface {
 		addHoveredButtonNew(interfaceId, btnHover, 85, 20, filePath );
 		interfaceId++;
 		totalChild++;
-		addSprite(interfaceId, 1065);
+		addSprite(interfaceId, 1065, filePath);
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Minigames", tda, 1, orangeColor, true, true);
@@ -2353,7 +2353,7 @@ public final class Interfaces extends RSInterface {
 		addHoveredButtonNew(interfaceId, btnHover, 85, 20, filePath);
 		interfaceId++;
 		totalChild++;
-		addSprite(interfaceId, 1068);
+		addSprite(interfaceId, 1068, filePath);
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Skilling", tda, 1, orangeColor, true, true);
@@ -2367,7 +2367,7 @@ public final class Interfaces extends RSInterface {
 		addHoveredButtonNew(interfaceId, btnHover, 85, 20, filePath);
 		interfaceId++;
 		totalChild++;
-		addSprite(interfaceId, 1070);
+		addSprite(interfaceId, 1070, filePath);
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Cities", tda, 1, orangeColor, true, true);
@@ -2375,7 +2375,7 @@ public final class Interfaces extends RSInterface {
 		totalChild++;
 
 		//Collection Log
-		addSprite(interfaceId, 1071 );
+		addSprite(interfaceId, 1071, filePath );
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Collection Log", tda, 1, orangeColor, true, true);
@@ -2383,7 +2383,7 @@ public final class Interfaces extends RSInterface {
 		totalChild++;
 
 		//Rewards
-		addSprite(interfaceId, 1067 );
+		addSprite(interfaceId, 1067, filePath );
 		interfaceId++;
 		totalChild++;
 		addText(interfaceId, "Rewards", tda, 1, orangeColor, true, true);
@@ -2415,10 +2415,19 @@ public final class Interfaces extends RSInterface {
 		interfaceId++;
 		totalChild++;
 
+		addNpc(interfaceId, 1265);
+		interfaceId++;
+		totalChild++;
+
+		//Left column
+		//title
+		addText(interfaceId, "", tda, 2, orangeColor, true, true);
+		interfaceId++;
+		totalChild++;
 
 		//addToItemGroup(58046, 190, 83, 10, 5, false, new String[] {null, null, null, null, null});
 
-		tab.totalChildren(totalChild);
+		tab.totalChildren(38);
 		tab.child(0, 58001, 7, 8);
 		//Title
 		tab.child(21, 58002, 250, 15);
@@ -2472,22 +2481,14 @@ public final class Interfaces extends RSInterface {
 		//NPC Model Interface
 		tab.child(37, 58036, 140, 140);
 
-		addNpc(interfaceId, 1265);
-		interfaceId++;
-		totalChild++;
 
-		//Left column
-		//title
-		addText(interfaceId, "", tda, 2, orangeColor, true, true);
-		interfaceId++;
-		totalChild++;
 		//Scroll Menu
 		RSInterface teleportList = addInterface(58200);
 		teleportList.width = 95; teleportList.height = 190; teleportList.scrollMax = 490;
-		setChildren(1, teleportList);
+//		setChildren(0, teleportList);
 		// increase if more child elements are added to teleportList
 
-		int teleportChild = 0;
+		int teleportChild = 1;
 		int y = 0;
 		int teleportId = 58201;
 
