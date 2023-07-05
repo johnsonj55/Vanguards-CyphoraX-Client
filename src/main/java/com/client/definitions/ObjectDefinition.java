@@ -165,7 +165,7 @@ public final class ObjectDefinition implements RSObjectComposition {
 				objectDef.actions = new String[]{ "Enter", null, null, null, null};
 				break;
 			case 36062:
-				objectDef.description = "Teleports you anywhere around Cyphora.";
+				objectDef.description = "Teleports you anywhere around Cyphorax.";
 				objectDef.actions = new String[] { "Activate", "Previous Location", null, null, null };
 				break;
 			case 4152:

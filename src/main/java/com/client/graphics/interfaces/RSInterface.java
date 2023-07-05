@@ -26,10 +26,13 @@ public class RSInterface {
 	public static int emptyInterface = 24_470;
 	public static boolean showIds = false;
 	public static RSFont[] newFonts;
+	public byte transparancy;
+	public int npcDisplay = 0;
+	public Sprite disabledSprite;
+	public Sprite enabledSprite;
 
 
-
-    public static void printEmptyInterfaceSections() {
+	public static void printEmptyInterfaceSections() {
 		int count = 0;
 		int start = 0;
 		for (int index = 0; index < interfaceCache.length; index++) {
@@ -53,12 +56,12 @@ public class RSInterface {
 
 	public static void unpack(FileArchive streamLoader, TextDrawingArea textDrawingAreas[],
 							  FileArchive streamLoader_1, RSFont[] newFontSystem) {
-		aMRUNodes_238 = new ReferenceCache(50000);
+		aMRUNodes_238 = new ReferenceCache(200000);
 		Buffer stream = new Buffer(streamLoader.readFile("data"));
 		newFonts = newFontSystem;
 		int i = -1;
 		int j = stream.readUShort();
-		interfaceCache = new RSInterface[j + 80000];
+		interfaceCache = new RSInterface[200000];
 		while (stream.currentPosition < stream.payload.length) {
 			int k = stream.readUShort();
 			if (k == 65535) {
@@ -4274,6 +4277,39 @@ public class RSInterface {
 		tab.width = width;
 		tab.height = height;
 		tab.tooltip = text;
+	}
+
+	public static void addHoverButtonNew(int i, int spriteId, int width, int height, String text, int contentType,
+									  int hoverOver, String imagePath, int aT) { // hoverable button
+		RSInterface tab = addTabInterface(i);
+		tab.id = i;
+		tab.parentID = i;
+		tab.type = 5;
+		tab.atActionType = aT;
+		tab.contentType = contentType;
+		tab.aByte254 = 0;
+		tab.mOverInterToTrigger = hoverOver;
+		tab.sprite1 = imageLoader(spriteId, imagePath);
+		tab.sprite2 = imageLoader(spriteId, imagePath);
+		tab.width = width;
+		tab.height = height;
+		tab.tooltip = text;
+	}
+
+	public static void addHoveredButtonNew(int i, int spriteId, int w, int h, String imagePath) { // hoverable
+		// button
+		RSInterface tab = addTabInterface(i);
+		tab.parentID = i;
+		tab.id = i;
+		tab.type = 0;
+		tab.atActionType = 0;
+		tab.width = w;
+		tab.height = h;
+		tab.invisible = true;
+		tab.opacity = 0;
+		tab.isMouseoverTriggeredTest = -1;
+		tab.scrollMax = 0;
+		tab.sprite1 = imageLoader(spriteId, imagePath);
 	}
 
 

@@ -17697,8 +17697,10 @@ public class Client extends GameEngine implements RSClient {
 		} catch (Exception exception) {
 			PacketLog.log();
 			exception.printStackTrace();
-			String s2 = "T2 - " + incomingPacket + "," + previousPacket1 + "," + previousPacket2 + " - " + packetSize
-					+ "," + (baseX + localPlayer.pathX[0]) + "," + (baseY + localPlayer.pathY[0]) + " - ";
+			String s2 = "T2 - Packet: " + incomingPacket + ", Packet Size: " + packetSize
+					+ " - Previous packet: " + previousPacket1 + " Previous packet size: " + previousPacketSize1
+					+ ", 2nd Previous packet: " + previousPacket2 + ", 2nd Previous packet size: "
+					+ previousPacketSize2 + "," + (baseX + localPlayer.pathX[0]) + "," + (baseY + localPlayer.pathY[0]) + " - ";
 			for (int j15 = 0; j15 < packetSize && j15 < 50; j15++)
 				s2 = s2 + inStream.payload[j15] + ",";
 			Signlink.reporterror(s2);
