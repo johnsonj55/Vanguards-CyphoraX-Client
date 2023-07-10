@@ -161,7 +161,20 @@ public final class NpcDefinition implements RSNPCComposition {
 			entityDef.size = 5;
 		}
 
-
+		if (i == 9999) {//V boss
+			NpcDefinition k = lookup(2205);
+			entityDef.name = "Vote boss";
+			entityDef.actions = new String[5];
+			entityDef.actions = new String[] { null, "Attack", null, null, null };
+			entityDef.models = new int[1];
+			entityDef.models = k.models;
+			entityDef.standingAnimation = k.standingAnimation;
+			entityDef.walkingAnimation = k.walkingAnimation;
+			entityDef.rotationSpeed = 64;
+			entityDef.npcHeight = k.npcHeight;
+			entityDef.npcWidth = k.npcWidth;
+			entityDef.combatLevel = 1000;
+		}
 		if (i == 6005) {//normal minikratos
 			NpcDefinition k = lookup(7668);
 			entityDef.name = "Mini Kratos";
@@ -973,7 +986,7 @@ public final class NpcDefinition implements RSNPCComposition {
 		}
 		if (i == 2303) {
 			entityDef.name = "Dark king penguin";
-			entityDef.models = new int[] { 46200 };
+			entityDef.models = new int[] { 56605 };
 			entityDef.actions = new String[5];
 			entityDef.actions = new String[] { "Talk-to", null, "Pick-Up", null, null };
 			entityDef.originalColors = null;
@@ -1277,6 +1290,47 @@ public final class NpcDefinition implements RSNPCComposition {
      */
 
     public int category;
+
+	public static NpcDefinition copy(NpcDefinition itemDef, int newId, int copyingItemId, String newName, int[] models, int combatLevel, String... actions) {
+		NpcDefinition copyItemDef = lookup(copyingItemId);
+		itemDef.npcId = newId;
+		itemDef.name = newName;
+		itemDef.description = copyItemDef.description;
+		itemDef.models = models;
+		itemDef.size = copyItemDef.size;
+		itemDef.standingAnimation = copyItemDef.standingAnimation;
+		itemDef.walkingAnimation = copyItemDef.walkingAnimation;
+		itemDef.rotate180AnimIndex = copyItemDef.rotate180AnimIndex;
+		itemDef.rotate90CWAnimIndex = copyItemDef.rotate90CWAnimIndex;
+		itemDef.rotate90CCWAnimIndex = copyItemDef.rotate90CCWAnimIndex;
+		itemDef.originalColors = copyItemDef.originalColors;
+		itemDef.newColors = copyItemDef.newColors;
+		itemDef.originalTextures = copyItemDef.originalTextures;
+		itemDef.newTextures = copyItemDef.newTextures;
+		itemDef.chatheadModels = copyItemDef.chatheadModels;
+		itemDef.onMinimap = copyItemDef.onMinimap;
+		itemDef.combatLevel = combatLevel;
+		itemDef.npcHeight = copyItemDef.npcHeight;
+		itemDef.npcWidth = copyItemDef.npcWidth;
+		itemDef.anInt75 = copyItemDef.anInt75;
+		itemDef.aBoolean93 = copyItemDef.aBoolean93;
+		itemDef.ambient = copyItemDef.ambient;
+		itemDef.contrast = copyItemDef.contrast;
+		itemDef.anInt75 = copyItemDef.anInt75;
+		itemDef.rotationSpeed = copyItemDef.rotationSpeed;
+		itemDef.varbitId = copyItemDef.varbitId;
+		itemDef.varpIndex = copyItemDef.varpIndex;
+		itemDef.configs = copyItemDef.configs;
+		itemDef.clickable = copyItemDef.clickable;
+		itemDef.actions = copyItemDef.actions;
+		itemDef.actions = new String[10];
+		if (actions != null) {
+			for (int index = 0; index < actions.length; index++) {
+				itemDef.actions[index] = actions[index];
+			}
+		}
+		return itemDef;
+	}
 
     private void readValues(Buffer buffer) {
         while (true) {

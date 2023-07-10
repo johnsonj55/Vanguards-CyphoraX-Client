@@ -1,6 +1,6 @@
 package com.client;
 
-import com.client.graphics.loaders.SpriteLoader4;
+import com.client.graphics.loaders.*;
 import com.client.hover.HoverMenuManager;
 import java.awt.*;
 import java.awt.Point;
@@ -67,10 +67,7 @@ import com.client.graphics.interfaces.settings.Setting;
 import com.client.graphics.interfaces.settings.SettingsInterface;
 import com.client.graphics.interfaces.impl.SettingsTabWidget;
 import com.client.graphics.interfaces.impl.Slider;
-import com.client.graphics.loaders.SpriteLoader1;
 import com.client.graphics.textures.TextureProvider;
-import com.client.graphics.loaders.SpriteLoader2;
-import com.client.graphics.loaders.SpriteLoader3;
 import com.client.model.Items;
 import com.client.script.ClientScripts;
 import com.client.sign.Signlink;
@@ -438,6 +435,7 @@ public class Client extends GameEngine implements RSClient {
 
 	private long experienceCounter;
 	private Sprite mapBack;
+	public static Sprite[] cacheSprite474;
 	private Sprite[] smallXpSprites = new Sprite[22];
 	private static final long serialVersionUID = 1L;
 	private Sprite[] inputSprites = new Sprite[7];
@@ -1112,8 +1110,8 @@ public class Client extends GameEngine implements RSClient {
 			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 81 : 76)
 			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 109 : 107)
 			: MouseHandler.mouseX >= canvasWidth - 210 && MouseHandler.mouseX <= canvasWidth - 157
-			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 90 : 55)
-			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 119 : 104);
+			&& MouseHandler.mouseY >= (Configuration.osbuddyGameframe ? 85 : 85)
+			&& MouseHandler.mouseY < (Configuration.osbuddyGameframe ? 119 : 124);
 		runHover = fixed
 			? runHover = MouseHandler.mouseX >= (Configuration.osbuddyGameframe ? 530 : 522)
 			&& MouseHandler.mouseX <= (Configuration.osbuddyGameframe ?  582 : 594)
@@ -1131,7 +1129,7 @@ public class Client extends GameEngine implements RSClient {
 			&& MouseHandler.mouseY <= 152;
 
 		wikiHover = fixed ? MouseHandler.mouseX >= 714 && MouseHandler.mouseX <= 740 && MouseHandler.mouseY >= 148 && MouseHandler.mouseY <= 162
-			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 153 && MouseHandler.mouseY <= 172;
+			: MouseHandler.mouseX >= canvasWidth - 34 && MouseHandler.mouseX <= canvasWidth - 5 && MouseHandler.mouseY >= 168 && MouseHandler.mouseY <= 185;
 
 		teleOrbHover = fixed ? MouseHandler.mouseX >= 709 && MouseHandler.mouseX <= 734 && MouseHandler.mouseY >= 32 && MouseHandler.mouseY <= 57
 			: MouseHandler.mouseX >= canvasWidth - 94 && MouseHandler.mouseX <= canvasWidth - 80 && MouseHandler.mouseY >= 160 && MouseHandler.mouseY <= 173;
@@ -10817,7 +10815,8 @@ public class Client extends GameEngine implements RSClient {
 		SpriteLoader4.loadSprites();
 		cacheSprite4 = SpriteLoader4.sprites;
 		SpriteLoader4.sprites = null;
-
+		SpriteLoader1.load474Sprites();
+		cacheSprite474 = SpriteLoader1.sprites474;
 		drawLoadingText(10, "Loading Packed Sprites...");
 		try {
 			ItemDef.load();
@@ -10872,7 +10871,7 @@ public class Client extends GameEngine implements RSClient {
 			if (Configuration.packIndexData) {
 				//repackCacheAll();
 				//repackCacheIndex(1);
-				//repackCacheIndex(4);
+				repackCacheIndex(4);
 				//repackCacheIndex(2);
 			}
 
@@ -13711,7 +13710,7 @@ public class Client extends GameEngine implements RSClient {
 				// output: "Object map: "[1, 3, 5, 7, 9]"
 			}
 
-			aTextDrawingArea_1271.method385(0xffff00, "Map Data: " + terrainIndices[0] + ".dat", 97, 5);
+			aTextDrawingArea_1271.method385(0xffff00, "Map Data: " + terrainData[0] + ".dat", 97, 5);
 			aTextDrawingArea_1271.method385(0xffff00, "Fps: " + super.fps, 111, 5);
 			aTextDrawingArea_1271.method385(0xffff00, "Memory Used: " + j1/1024 + "MB", 125, 5);
 			aTextDrawingArea_1271.method385(0xffff00,
@@ -13963,6 +13962,7 @@ public class Client extends GameEngine implements RSClient {
 	private boolean processWidgetAnimations(int tick, int interfaceId) {
 		boolean flag1 = false;
 		RSInterface class9 = RSInterface.interfaceCache[interfaceId];
+		System.out.println("Class 9  length: " + class9.children.length);
 		for (int k = 0; k < class9.children.length; k++) {
 			if (class9.children[k] == -1)
 				break;
@@ -14707,11 +14707,11 @@ public class Client extends GameEngine implements RSClient {
 				cacheSprite2[0].drawSprite(canvasWidth - 31, 145);
 			}
 
-			//	if (wikiHover) {
-			//	wiki2.drawSprite(currentGameWidth - 40, 165);
-			//	} else {
-			//		wiki1.drawSprite(currentGameWidth - 40, 165);
-			//	}
+				if (wikiHover) {
+					wiki[1].drawSprite(canvasWidth - 40, 175);
+				} else {
+					wiki[0].drawSprite(canvasWidth - 40, 175);
+				}
 
 			if (teleOrbHover) {
 				teleOrb2.drawSprite(canvasWidth - 100, 150);
@@ -14720,7 +14720,6 @@ public class Client extends GameEngine implements RSClient {
 				teleOrb1.drawSprite(canvasWidth - 100, 150);
 
 			}
-
 		}
 		if (menuOpen) {
 			drawMenu(0,0);
@@ -15781,7 +15780,7 @@ public class Client extends GameEngine implements RSClient {
 		k1 += 20;
 
 		if (MouseHandler.clickMode3 == 1 && MouseHandler.saveClickX >= 231 && MouseHandler.saveClickX <= 370 && MouseHandler.saveClickY >= 218
-			&& MouseHandler.saveClickY <= 350) {
+			&& MouseHandler.saveClickY <= 370) {
 
 			// loginScreenState = 3;
 			loginFailures = 0;
@@ -17478,7 +17477,6 @@ public class Client extends GameEngine implements RSClient {
 
 				case 97:
 					int interfaceId = inStream.readUShort();
-
 					resetAnimation(interfaceId);
 					if (invOverlayInterfaceID != 0) {
 						invOverlayInterfaceID = 0;
@@ -17497,6 +17495,9 @@ public class Client extends GameEngine implements RSClient {
 					if (interfaceId == 15244) {
 						openInterfaceID = 15767;
 						fullscreenInterfaceID = 15244;
+					}
+					if (interfaceId == 26263) {
+						fullscreenInterfaceID = 26263;
 					}
 
 					if (interfaceId == 44900) {

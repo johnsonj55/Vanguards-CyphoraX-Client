@@ -256,7 +256,7 @@ public final class ItemDefinition implements RSItemComposition {
 
 			case 995:
 				itemDef.interfaceOptions = new String[]
-					{null, null, null, "Add-to-pouch", "Drop"};
+					{null, null, null, null, "Drop"};
 				break;
 
 			case 21126://Hazelmeres Signet

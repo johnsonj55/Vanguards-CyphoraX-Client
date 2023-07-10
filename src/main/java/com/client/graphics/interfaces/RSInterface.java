@@ -53,12 +53,12 @@ public class RSInterface {
 
 	public static void unpack(FileArchive streamLoader, TextDrawingArea textDrawingAreas[],
 							  FileArchive streamLoader_1, RSFont[] newFontSystem) {
-		aMRUNodes_238 = new ReferenceCache(50000);
+		aMRUNodes_238 = new ReferenceCache(200000);
 		Buffer stream = new Buffer(streamLoader.readFile("data"));
 		newFonts = newFontSystem;
 		int i = -1;
 		int j = stream.readUShort();
-		interfaceCache = new RSInterface[j + 80000];
+		interfaceCache = new RSInterface[200000];
 		while (stream.currentPosition < stream.payload.length) {
 			int k = stream.readUShort();
 			if (k == 65535) {
@@ -140,6 +140,10 @@ public class RSInterface {
 						String s1 = stream.readString();
 						if (streamLoader_1 != null && s1.length() > 0) {
 							int i5 = s1.lastIndexOf(",");
+							if (s1.substring(0, i5).toLowerCase().equals("mige")) {
+								int id = Integer.parseInt(s1.substring(i5 + 1));
+								rsInterface.sprites[j2] = Client.cacheSprite474[id];
+							} else
 							rsInterface.sprites[j2] = method207(Integer.parseInt(s1.substring(i5 + 1)), streamLoader_1,
 									s1.substring(0, i5));
 						}
@@ -189,12 +193,20 @@ public class RSInterface {
 				String s = stream.readString();
 				if (streamLoader_1 != null && s.length() > 0) {
 					int i4 = s.lastIndexOf(",");
+					if (s.substring(0, i4).toLowerCase().equals("mige")) {
+						int id = Integer.parseInt(s.substring(i4 + 1));
+						rsInterface.sprite1 = Client.cacheSprite474[id];
+					} else
 					rsInterface.sprite1 = method207(Integer.parseInt(s.substring(i4 + 1)), streamLoader_1,
 							s.substring(0, i4));
 				}
 				s = stream.readString();
 				if (streamLoader_1 != null && s.length() > 0) {
 					int j4 = s.lastIndexOf(",");
+					if (s.substring(0, j4).toLowerCase().equals("mige")) {
+						int id = Integer.parseInt(s.substring(j4 + 1));
+						rsInterface.sprite1 = Client.cacheSprite474[id];
+					} else
 					rsInterface.sprite2 = method207(Integer.parseInt(s.substring(j4 + 1)), streamLoader_1,
 							s.substring(0, j4));
 				}

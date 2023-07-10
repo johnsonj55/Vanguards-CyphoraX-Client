@@ -25,7 +25,7 @@ public class Configuration {
 	 */
 	public static final int CACHE_VERSION = 8; // Change this up one when making cache updates.
 
-	public static final String CACHE_LINK = "https://cyphorax.com/debunk/.yanillev2.zip";
+	public static final String CACHE_LINK = "https://cyphorax.com/debunk/.cyphorax.zip";
 
 	/**
 	 * The server version. The cache path is append with a _v1/2/3 etc for the version number
@@ -40,8 +40,8 @@ public class Configuration {
 	public static final String WEBSITE = "https://cyphorax.com";
 	public static final String DEDICATED_SERVER_ADDRESS = "127.0.0.1"; //158.69.62.205
 	public static final String TEST_SERVER_ADDRESS = LOCAL_HOST ? "216.158.233.150" : "216.158.233.150";
-	public static final int PORT = 43595;
-	public static final int TEST_PORT = 43595;
+	public static final int PORT = 43594;
+	public static final int TEST_PORT = 43594;
 	public static final int CACHE_FOLDER_VERSION = 1;
 	public static final String CACHE_NAME = ".cyphorax";
 	public static final String DEV_CACHE_NAME = "local_cache";
@@ -56,7 +56,7 @@ public class Configuration {
 
 	public static boolean developerMode = false;
 	public static boolean loadExternalCacheArchives = false; // Always true because I can't seem to pack them correctly
-	public static boolean packIndexData = false;
+	public static boolean packIndexData = true;
 	public static boolean dumpMaps = false;
 	public static boolean dumpAnimationData = false;
 	public static boolean dumpDataLists = false;

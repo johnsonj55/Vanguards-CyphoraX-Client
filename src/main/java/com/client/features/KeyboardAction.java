@@ -9,7 +9,10 @@ import java.awt.event.KeyEvent;
 public enum KeyboardAction {
 
     RELOAD_LAST_PRESET(1, KeyEvent.VK_R, true, false, false),
-    LAST_TELEPORT(2, KeyEvent.VK_T, true, false, false);
+    LAST_TELEPORT(2, KeyEvent.VK_P, true, false, false),
+    TELEPORTS(3, KeyEvent.VK_T, true, false, false),
+    DONATOR_ZONE(4, KeyEvent.VK_D, true, false, false),
+    HOME(5, KeyEvent.VK_H, true, false, false);
 
     private final int action;
     private final int key;

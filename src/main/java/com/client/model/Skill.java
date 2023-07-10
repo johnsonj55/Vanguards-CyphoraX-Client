@@ -26,7 +26,8 @@ public enum Skill {
 	SLAYER(18, 70),
 	FARMING(19, 35),
 	RUNECRAFTING(20, 75),
-	HUNTER(21, 60);
+	HUNTER(21, 60),
+	CONSTRUCTION(22, 60);
 
 	public static Skill forId(int id) {
 		return Stream.of(values()).filter(s -> s.id == id).findFirst().orElse(null);

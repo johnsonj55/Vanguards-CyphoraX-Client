@@ -46,6 +46,41 @@ public class SpriteLoader1 {
 		}
 	}
 
+	public static void load474Sprites() {
+		try {
+			Buffer index = new Buffer(FileOperations.readFile(Signlink.getCacheDirectory() + "474 sprites.idx"));
+			Buffer data = new Buffer(FileOperations.readFile(Signlink.getCacheDirectory() + "474 sprites.dat"));
+			DataInputStream indexFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(index.payload)));
+			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.payload)));
+			int totalSprites = indexFile.readInt();
+			if (cache474 == null) {
+				cache474 = new SpriteLoader[totalSprites];
+				sprites474 = new Sprite[totalSprites];
+			}
+			for (int i = 0; i < totalSprites; i++) {
+				int id = indexFile.readInt();
+				if (cache474[id] == null) {
+					cache474[id] = new SpriteLoader();
+				}
+				cache474[id].readValues(indexFile, dataFile);
+				createSprite474(cache474[id]);
+			}
+			indexFile.close();
+			dataFile.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void createSprite474(SpriteLoader sprite) {
+		sprites474[sprite.id] = new Sprite(sprite.spriteData);
+		sprites474[sprite.id].drawOffsetX = sprite.drawOffsetX;
+		sprites474[sprite.id].drawOffsetY = sprite.drawOffsetY;
+	}
+
+	public static SpriteLoader[] cache474;
+	public static Sprite[] sprites474 = null;
+
 	/**
 	 * Reads the information from the index and data files.
 	 * @param index holds the sprite indices

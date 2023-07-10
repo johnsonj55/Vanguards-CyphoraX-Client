@@ -472,6 +472,13 @@ public final class ObjectDefinition implements RSObjectComposition {
 			case 4151:
 				objectDef.name = "Barrows Mini-game Portal";
 				break;
+			case 32738:
+				objectDef.name = "Treasure room";
+				objectDef.actions = new String[] { "Enter", null, null, null, null };
+				objectDef.sizeX = 3;
+				objectDef.sizeY = 3;
+				objectDef.ambient = 25;
+				break;
 			case 1753:
 				objectDef.objectModels = new int[] { 8157, };
 				objectDef.name = "Yew";
