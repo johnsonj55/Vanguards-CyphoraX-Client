@@ -308,7 +308,7 @@ public final class NpcDefinition implements RSNPCComposition {
 		}
 
 
-		if (i == 3407) {
+/*		if (i == 3407) {
 			entityDef.name = "Solak";
 			entityDef.combatLevel = 546;
 			entityDef.models = new int[] { 50204 };
@@ -322,7 +322,7 @@ public final class NpcDefinition implements RSNPCComposition {
 			entityDef.npcWidth = 180;
 			entityDef.npcHeight = 180;
 
-		}
+		}*/
 
 		if (i == 4804) { //lava dragon
 			NpcDefinition lava = lookup(6593);
@@ -1005,6 +1005,8 @@ public final class NpcDefinition implements RSNPCComposition {
 			entityDef.combatLevel = 0;
 			entityDef.standingAnimation = 3346;
 			entityDef.walkingAnimation = -1;
+			entityDef.npcWidth = 32; //WIDTH
+			entityDef.npcHeight = 22; // HEIGH
 		}
 		if (i == 2305) {
 			entityDef.name = "Dark shadow warrior";

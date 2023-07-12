@@ -86,7 +86,7 @@ public class HoverMenuManager {
 
         // EXPERIENCE BOOSTED ITEMS:
 
-        menus.put(21752, new HoverMenu("Collects & doubles drops to inventory or bank when equipped."));
+        menus.put(21752, new HoverMenu("Provides a +10 drop bonus"));
         menus.put(21126, new HoverMenu("Auto collects all foe items to bank from skilling & 1/100 chance to double all drops."));
         menus.put(7409, new HoverMenu("Provides bonus herb yield while wearing the item."));
         menus.put(10071, new HoverMenu("Provides bonus hunter experince while wearing the item."));

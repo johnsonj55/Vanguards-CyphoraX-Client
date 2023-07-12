@@ -280,9 +280,60 @@ public final class ItemDefinition implements RSItemComposition {
 				itemDef.interfaceOptions[2] = null;
 				// itemDef.aByte205 = 3;
 				break;
-
-
-
+			case 27610:
+				itemDef.name = "Venator bow";
+				//itemDef.description = "Twisted crossbow.";
+				itemDef.modelId = 47098;
+				itemDef.maleModel0 = 46963;
+				itemDef.femaleModel0 = 46964;
+				itemDef.zoom2d = 1382;
+				itemDef.xan2d = 720;
+				itemDef.yan2d = 1509;
+				itemDef.xOffset2d = 5;
+				itemDef.yOffset2d = -3;
+				itemDef.interfaceOptions = new String[5];
+				itemDef.interfaceOptions[1] = "Wear";
+				itemDef.interfaceOptions[2] = null;
+				// itemDef.aByte205 = 3;
+				break;
+			case 27615:
+				itemDef.name = "Venator shard";
+				//itemDef.description = "Twisted crossbow.";
+				itemDef.modelId = 47091;
+				itemDef.zoom2d = 1053;
+				itemDef.xan2d = 539;
+				itemDef.yan2d = 34;
+				itemDef.xOffset2d = 1;
+				itemDef.yOffset2d = 4;
+				// itemDef.aByte205 = 3;
+				break;
+			case 27616:
+				itemDef.name = "Ancient essence";
+				//itemDef.description = "Twisted crossbow.";
+				itemDef.modelId = 47092;
+				itemDef.zoom2d = 720;
+				itemDef.xan2d = 108;
+				itemDef.yan2d = 2047;
+				itemDef.xOffset2d = 1;
+				itemDef.yOffset2d = 4;
+				// itemDef.aByte205 = 3;
+				break;
+			case 27612:
+				itemDef.name = "Venator bow (uncharged)";
+				//itemDef.description = "Twisted crossbow.";
+				itemDef.modelId = 47097;
+				itemDef.maleModel0 = 46961;
+				itemDef.femaleModel0 = 46960;
+				itemDef.zoom2d = 926;
+				itemDef.xan2d = 432;
+				itemDef.yan2d = 258;
+				itemDef.xOffset2d = 0;
+				itemDef.yOffset2d = 3;
+				itemDef.interfaceOptions = new String[5];
+				itemDef.interfaceOptions[1] = "Wear";
+				itemDef.interfaceOptions[2] = null;
+				// itemDef.aByte205 = 3;
+				break;
 
 			case 16011://Mini solak pet
 				itemDef.name = "Mini Solak";

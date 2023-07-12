@@ -146,9 +146,11 @@ public final class ObjectDefinition implements RSObjectComposition {
 				objectDef.name = "Home portal";
 				break;
 
+/*
 			case 27269://Solak chest
 				objectDef.name = "Solak Chest";
 				break;
+*/
 
 			case 14986://glod chest
 				objectDef.name = "Glod Chest";
